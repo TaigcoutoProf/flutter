@@ -1,7 +1,5 @@
-import 'dart:math';
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:meuprojeto/services/gerador_numero_aleatorio_service.dart';
 
 class HomePage extends StatefulWidget {
   const new({super.key});
@@ -13,11 +11,6 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   var numeroGerado = 0;
-
-  int _gerarNumeroAleatorio() {
-    Random numeroAleatorio = Random();
-    return numeroAleatorio.nextInt(1000);
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +26,7 @@ class _HomePageState extends State<HomePage> {
         child: Icon(Icons.sync),
         onPressed: () {
           setState(() {
-            numeroGerado = _gerarNumeroAleatorio();
+            numeroGerado = GeradorNumeroAleatorioService.gerarNumeroAleatorio(20);
           });
         },
       ),
