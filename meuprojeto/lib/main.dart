@@ -1,18 +1,20 @@
+import 'dart:math';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MeuApp());
+  runApp(const MyApp());
 }
 
-class MeuApp extends StatelessWidget {
+class MyApp extends StatelessWidget {
   const new({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData(primarySwatch: Colors.blue),
       home: HomePage(),
+      theme: ThemeData(primarySwatch: Colors.deepPurple),
     );
   }
 }
@@ -25,15 +27,30 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  var numeroGerado = 0;
+
+  int _gerarNumeroAleatorio() {
+    Random numeroAleatorio = Random();
+    return numeroAleatorio.nextInt(1000);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("MeuApp")
-        ),
+        title: Text("Gerador de números aleatórios"),
+        backgroundColor: Colors.deepPurpleAccent,
+      ),
+
+      body: Center(child: Text(numeroGerado.toString())),
+
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.document_scanner),
-        onPressed: () {},
+        child: Icon(Icons.sync),
+        onPressed: () {
+          setState(() {
+            numeroGerado = _gerarNumeroAleatorio();
+          });
+        },
       ),
     );
   }
