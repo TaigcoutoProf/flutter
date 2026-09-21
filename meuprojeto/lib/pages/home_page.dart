@@ -40,7 +40,7 @@ class _HomePageState extends State<HomePage> {
               color: Colors.grey.withAlpha(10),
               boxShadow: [BoxShadow(
                 color: Colors.black.withAlpha(10),
-                blurRadius: 8,
+                blurRadius: 4,
                 offset: Offset(0, 5)
               )],
               borderRadius: BorderRadius.circular(20)
@@ -69,29 +69,40 @@ class _HomePageState extends State<HomePage> {
               ],
             ),
           ),
-          Column(
-            children: [
-              Center(
-                child: Text(
-                  "Número gerado:",
-                  style: GoogleFonts.inter(
-                    fontSize: 20,
-                    fontWeight: FontWeight.w900,
-                    color: Colors.indigo,
+          Container(
+            padding: EdgeInsets.fromLTRB(10, 40, 10, 40),
+            margin:EdgeInsets.symmetric(horizontal: 20,vertical: 0),
+            decoration: BoxDecoration(
+              color: Colors.grey.withAlpha(10),
+              boxShadow: [BoxShadow(
+                color: Colors.black.withAlpha(10),
+                blurRadius: 4,
+                offset: Offset(0, 5)
+              )],
+              borderRadius: BorderRadius.circular(20)
+              ),
+            child: Column(
+              children: [
+                Text(
+                    "Número gerado:",
+                    style: GoogleFonts.inter(
+                      fontSize: 20,
+                      fontWeight: FontWeight.w900,
+                      color: Colors.indigo,
+                    ),
                   ),
+            Center(
+              child: Text(
+                numeroGerado.toString(),
+                style: GoogleFonts.inter(
+                  fontSize: 60,
+                  fontWeight: FontWeight.w900,
+                  color: Colors.indigo,
                 ),
               ),
-          Center(
-            child: Text(
-              numeroGerado.toString(),
-              style: GoogleFonts.inter(
-                fontSize: 60,
-                fontWeight: FontWeight.w900,
-                color: Colors.indigo,
-              ),
             ),
-          ),
-            ],
+              ],
+            ),
           ),
         ],
       ),
