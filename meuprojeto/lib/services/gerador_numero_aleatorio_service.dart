@@ -1,8 +1,8 @@
 import 'dart:math';
 
 class GeradorNumeroAleatorioService {
-  static int gerarNumeroAleatorio(int num_max) {
+  static int gerarNumeroAleatorio(int numMax) {
     Random numeroAleatorio = Random();
-    return numeroAleatorio.nextInt(num_max);
+    return numeroAleatorio.nextInt(numMax);
   }
 }
