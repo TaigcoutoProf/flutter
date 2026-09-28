@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatefulWidget {
@@ -12,6 +10,15 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: Color.fromARGB(255, 211, 215, 250),
+        body:Container(
+          width: 200,
+          height: 200,
+          color: Color.fromARGB(255, 51, 90, 139),
+        )
+      ),
+    );
   }
 }
