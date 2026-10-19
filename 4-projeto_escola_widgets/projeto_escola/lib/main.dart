@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:projeto_escola/core/escola_ds.dart';
 
-import 'pages/login_page.dart';
+import 'views/tela_login.dart';
 
 void main() => runApp(const EscolaApp());
 
@@ -17,7 +17,7 @@ class EscolaApp extends StatelessWidget {
         useMaterial3: true,
         colorScheme: ColorScheme.fromSeed(seedColor: EscolaDS.azul),
       ),
-      home: const LoginPage(),
+      home: const TelaLogin(),
     );
   }
 }

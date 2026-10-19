@@ -13,6 +13,8 @@ abstract final class EscolaDS {
   static const borda = Color(0xFFDDDDDD);
   static const desabilitado = Color(0xFFD1D5DB);
   static const textoDesabilitado = Color(0xFF6B7280);
+  static const verde = Color(0xFF16A34A);
+  static const vermelho = Color(0xFFDC2626);
   static const s8 = 8.0;
   static const s16 = 16.0;
   static const s24 = 24.0;

@@ -1,32 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:projeto_escola/core/escola_ds.dart';
 
-
-
 class EscolaInput extends StatelessWidget {
   const EscolaInput({
     super.key,
     required this.rotulo,
-    required this.dica,
     required this.controller,
     this.ocultarTexto = false,
+    this.habilitado = true,
     this.teclado = TextInputType.text,
-    this.acaoTeclado = TextInputAction.next,
-    this.aoEnviar,
+    this.aoMudar,
   });
 
   final String rotulo;
-  final String dica;
   final TextEditingController controller;
   final bool ocultarTexto;
+  final bool habilitado;
   final TextInputType teclado;
-  final TextInputAction acaoTeclado;
-  final ValueChanged<String>? aoEnviar;
+  final ValueChanged<String>? aoMudar;
 
-  OutlineInputBorder _borda(Color cor, double espessura) {
+  OutlineInputBorder _borda(Color cor) {
     return OutlineInputBorder(
       borderRadius: BorderRadius.circular(EscolaDS.raioCampo),
-      borderSide: BorderSide(color: cor, width: espessura),
+      borderSide: BorderSide(color: cor),
     );
   }
 
@@ -35,33 +31,24 @@ class EscolaInput extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        ExcludeSemantics(child: Text(rotulo, style: EscolaDS.rotulo)),
+        Text(rotulo, style: EscolaDS.rotulo),
         const SizedBox(height: 5),
-        Semantics(
-          label: rotulo,
-          child: TextField(
-            controller: controller,
-            obscureText: ocultarTexto,
-            obscuringCharacter: '•',
-            autocorrect: false,
-            enableSuggestions: !ocultarTexto,
-            keyboardType: teclado,
-            textInputAction: acaoTeclado,
-            onSubmitted: aoEnviar,
-            onTapOutside: (_) => FocusManager.instance.primaryFocus?.unfocus(),
-            style: EscolaDS.corpo,
-            cursorColor: EscolaDS.azul,
-            decoration: InputDecoration(
-              hintText: dica,
-              hintStyle: EscolaDS.corpo,
-              filled: true,
-              fillColor: EscolaDS.campo,
-              isDense: true,
-              contentPadding: const EdgeInsets.all(12),
-              // O próprio TextField acompanha o foco real.
-              enabledBorder: _borda(EscolaDS.borda, 1),
-              focusedBorder: _borda(EscolaDS.azul, 1),
-            ),
+        TextField(
+          controller: controller,
+          obscureText: ocultarTexto,
+          enabled: habilitado,
+          keyboardType: teclado,
+          onChanged: aoMudar,
+          style: EscolaDS.corpo,
+          cursorColor: EscolaDS.azul,
+          decoration: InputDecoration(
+            filled: true,
+            fillColor: habilitado ? EscolaDS.campo : EscolaDS.fundo,
+            isDense: true,
+            contentPadding: const EdgeInsets.all(12),
+            enabledBorder: _borda(EscolaDS.borda),
+            disabledBorder: _borda(EscolaDS.borda),
+            focusedBorder: _borda(EscolaDS.azul),
           ),
         ),
       ],
