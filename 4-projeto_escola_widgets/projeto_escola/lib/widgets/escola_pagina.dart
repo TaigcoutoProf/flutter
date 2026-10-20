@@ -17,7 +17,9 @@ class EscolaPagina extends StatelessWidget {
   });
 
   final String titulo;
+  // child é o conteúdo específico que cada tela coloca dentro da estrutura.
   final Widget child;
+  // Permite esconder o menu em telas secundárias, como o formulário.
   final bool comMenu;
 
   // Itens do menu que ainda não têm tela.
@@ -30,6 +32,7 @@ class EscolaPagina extends StatelessWidget {
   ];
 
   void _ir(BuildContext context, Widget tela) {
+    // Substitui a tela atual para não acumular páginas ao usar o menu.
     Navigator.pushReplacement(
       context,
       MaterialPageRoute(builder: (_) => tela),
@@ -37,6 +40,7 @@ class EscolaPagina extends StatelessWidget {
   }
 
   Widget _menu(BuildContext context) {
+    // Drawer cria o menu lateral aberto pelo ícone da AppBar.
     return Drawer(
       child: ListView(
         children: [
@@ -72,15 +76,18 @@ class EscolaPagina extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // Scaffold organiza as regiões principais de uma tela Material.
       backgroundColor: EscolaDS.fundo,
       appBar: AppBar(
         backgroundColor: EscolaDS.azul,
         foregroundColor: EscolaDS.superficie,
         title: Text(titulo),
       ),
+      // Quando drawer é null, a AppBar mostra automaticamente a seta de voltar.
       drawer: comMenu ? _menu(context) : null,
       bottomNavigationBar: const EscolaRodape(),
       body: SingleChildScrollView(
+        // Permite rolar o conteúdo quando ele ultrapassa a altura da tela.
         padding: const EdgeInsets.all(16),
         child: child,
       ),

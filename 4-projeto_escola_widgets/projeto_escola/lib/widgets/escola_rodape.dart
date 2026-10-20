@@ -10,6 +10,7 @@ class EscolaRodape extends StatelessWidget {
     return Container(
       width: double.infinity,
       color: EscolaDS.azulEscuro,
+      // SafeArea evita que o texto fique atrás da barra inferior do celular.
       child: SafeArea(
         top: false,
         child: Padding(

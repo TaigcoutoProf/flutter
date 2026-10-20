@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:projeto_escola/core/escola_ds.dart';
 
+/// Botão padrão do projeto, com cores, tamanho e raio do Design System.
 class EscolaBotao extends StatelessWidget {
   const EscolaBotao({
     super.key,
@@ -10,7 +11,8 @@ class EscolaBotao extends StatelessWidget {
   });
 
   final String texto;
-  final VoidCallback? aoPressionar; // null = botão desabilitado
+  // O ? permite receber null. No ElevatedButton, null deixa o botão desabilitado.
+  final VoidCallback? aoPressionar;
   final Color cor;
 
   @override
@@ -18,6 +20,7 @@ class EscolaBotao extends StatelessWidget {
     return ElevatedButton(
       onPressed: aoPressionar,
       style: ElevatedButton.styleFrom(
+        // Define a aparência dos estados habilitado e desabilitado.
         backgroundColor: cor,
         foregroundColor: EscolaDS.superficie,
         disabledBackgroundColor: EscolaDS.desabilitado,

@@ -14,6 +14,7 @@ class EscolaCartao extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // O Container recebe a decoração pronta e exibe qualquer widget em child.
     return Container(
       width: double.infinity,
       padding: padding,

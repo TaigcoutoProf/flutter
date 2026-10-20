@@ -12,6 +12,7 @@ class EscolaTabela extends StatelessWidget {
   });
 
   final List<String> colunas;
+  // Cada lista interna representa os valores de uma linha da tabela.
   final List<List<String>> linhas;
 
   /// Opcional: um widget por linha, mostrado na coluna "Ações".
@@ -32,10 +33,12 @@ class EscolaTabela extends StatelessWidget {
           ),
           dataTextStyle: EscolaDS.rotulo.copyWith(fontSize: 14),
           columns: [
+            // Cria uma coluna para cada título recebido.
             for (final coluna in colunas) DataColumn(label: Text(coluna)),
             if (acoes != null) const DataColumn(label: Text('Ações')),
           ],
           rows: [
+            // O índice liga cada linha de dados ao widget de ação correspondente.
             for (int i = 0; i < linhas.length; i++)
               DataRow(
                 cells: [

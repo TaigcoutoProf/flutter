@@ -16,6 +16,7 @@ class EscolaLink extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // TextButton é adequado para ações secundárias que parecem links.
     return TextButton(
       onPressed: aoPressionar,
       style: TextButton.styleFrom(

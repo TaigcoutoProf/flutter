@@ -10,6 +10,7 @@ import '../widgets/escola_pagina.dart';
 import '../widgets/escola_tabela.dart';
 import 'tela_form_aluno.dart';
 
+/// Tela de listagem. É Stateful porque a tabela muda após cadastrar ou excluir.
 class TelaAlunos extends StatefulWidget {
   const TelaAlunos({super.key});
 
@@ -18,6 +19,7 @@ class TelaAlunos extends StatefulWidget {
 }
 
 class _TelaAlunosState extends State<TelaAlunos> {
+  // Mantém os dados e as operações disponíveis para esta tela.
   final controller = AlunoController();
 
   // Sem aluno: tela de cadastro. Com aluno: tela de edição.
@@ -35,6 +37,7 @@ class _TelaAlunosState extends State<TelaAlunos> {
   }
 
   void confirmarExclusao(Aluno aluno) {
+    // Exibe uma janela modal para evitar exclusões acidentais.
     showDialog(
       context: context,
       builder: (dialogContext) => AlertDialog(
@@ -48,6 +51,7 @@ class _TelaAlunosState extends State<TelaAlunos> {
           TextButton(
             onPressed: () {
               controller.excluir(aluno);
+              // Informa ao Flutter que a lista mudou e a tabela deve ser refeita.
               setState(() {});
               Navigator.pop(dialogContext);
             },
@@ -60,6 +64,7 @@ class _TelaAlunosState extends State<TelaAlunos> {
 
   @override
   Widget build(BuildContext context) {
+    // Obtém os dados antes de transformá-los em linhas da tabela.
     final alunos = controller.listar();
 
     return EscolaPagina(
@@ -80,6 +85,7 @@ class _TelaAlunosState extends State<TelaAlunos> {
             EscolaTabela(
               colunas: const ['ID', 'Nome', 'CPF', 'Telefone'],
               linhas: [
+                // Converte cada objeto Aluno em uma lista de textos.
                 for (final aluno in alunos)
                   ['${aluno.id}', aluno.nome, aluno.cpf, aluno.telefone],
               ],
