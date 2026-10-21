@@ -4,7 +4,7 @@ import 'package:projeto_escola/core/escola_ds.dart';
 /// Botão padrão do projeto, com cores, tamanho e raio do Design System.
 class EscolaBotao extends StatelessWidget {
   const EscolaBotao({
-    super.key,
+    super.key,  
     required this.texto,
     this.aoPressionar,
     this.cor = EscolaDS.azul,

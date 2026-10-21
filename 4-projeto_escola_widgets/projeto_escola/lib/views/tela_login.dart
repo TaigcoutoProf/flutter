@@ -7,7 +7,6 @@ import '../widgets/escola_input.dart';
 import '../widgets/escola_rodape.dart';
 import 'tela_home.dart';
 
-/// Tela inicial. Usa estado porque o botão depende do conteúdo dos campos.
 class TelaLogin extends StatefulWidget {
   const TelaLogin({super.key});
 
@@ -16,17 +15,14 @@ class TelaLogin extends StatefulWidget {
 }
 
 class _TelaLoginState extends State<TelaLogin> {
-  // Controllers permitem acessar os textos digitados.
   final emailController = TextEditingController();
   final senhaController = TextEditingController();
 
-  // Getter calculado: só permite entrar quando os dois campos têm conteúdo.
   bool get podeEntrar =>
       emailController.text.trim().isNotEmpty &&
       senhaController.text.isNotEmpty;
 
   void entrar() {
-    // Abre a Home e retira o Login da pilha de navegação.
     Navigator.pushReplacement(
       context,
       MaterialPageRoute(builder: (_) => const TelaHome()),
@@ -35,7 +31,6 @@ class _TelaLoginState extends State<TelaLogin> {
 
   @override
   void dispose() {
-    // Libera os controllers quando a tela deixa de existir.
     emailController.dispose();
     senhaController.dispose();
     super.dispose();

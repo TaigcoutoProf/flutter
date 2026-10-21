@@ -8,7 +8,6 @@ import '../widgets/escola_cartao.dart';
 import '../widgets/escola_input.dart';
 import '../widgets/escola_pagina.dart';
 
-/// Formulário usado para cadastrar (aluno == null) e para editar.
 class TelaFormAluno extends StatefulWidget {
   const TelaFormAluno({
     super.key,
@@ -26,15 +25,12 @@ class TelaFormAluno extends StatefulWidget {
 }
 
 class _TelaFormAlunoState extends State<TelaFormAluno> {
-  // Um controller para cada campo permite preencher e recuperar os valores.
   final nomeController = TextEditingController();
   final cpfController = TextEditingController();
   final telefoneController = TextEditingController();
 
-  // Se recebeu um aluno, o formulário está editando; se recebeu null, cadastrando.
   bool get editando => widget.aluno != null;
 
-  // O botão permanece desabilitado enquanto algum campo estiver vazio.
   bool get podeSalvar =>
       nomeController.text.trim().isNotEmpty &&
       cpfController.text.trim().isNotEmpty &&
@@ -43,7 +39,6 @@ class _TelaFormAlunoState extends State<TelaFormAluno> {
   @override
   void initState() {
     super.initState();
-    // Na edição, inicia os campos com os dados atuais do aluno.
     final aluno = widget.aluno;
     if (aluno != null) {
       nomeController.text = aluno.nome;
@@ -53,14 +48,12 @@ class _TelaFormAlunoState extends State<TelaFormAluno> {
   }
 
   void salvar() {
-    // trim remove espaços extras no começo e no fim dos textos.
     final nome = nomeController.text.trim();
     final cpf = cpfController.text.trim();
     final telefone = telefoneController.text.trim();
     final aluno = widget.aluno;
 
     if (aluno == null) {
-      // Sem aluno recebido, cria um novo cadastro.
       final cadastrou = widget.controller.cadastrar(nome, cpf, telefone);
       if (!cadastrou) {
         ScaffoldMessenger.of(context).showSnackBar(
@@ -69,18 +62,15 @@ class _TelaFormAlunoState extends State<TelaFormAluno> {
         return;
       }
     } else {
-      // Com aluno recebido, altera o objeto existente.
       widget.controller.editar(aluno, nome, telefone);
     }
 
-    // Atualiza a listagem e retorna para a tela anterior.
     widget.aoSalvar();
     Navigator.pop(context);
   }
 
   @override
   void dispose() {
-    // Controllers devem ser descartados junto com a tela.
     nomeController.dispose();
     cpfController.dispose();
     telefoneController.dispose();

@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 /// Design System do projeto.
-/// Centraliza valores visuais para evitar cores e tamanhos repetidos nas telas.
 abstract final class EscolaDS {
-  // Paleta de cores usada pela interface e pelos estados dos componentes.
   static const azul = Color(0xFF2563EB);
   static const azulEscuro = Color(0xFF1E3A8A);
   static const fundo = Color(0xFFEEF2F7);
@@ -18,17 +16,17 @@ abstract final class EscolaDS {
   static const verde = Color(0xFF16A34A);
   static const vermelho = Color(0xFFDC2626);
 
-  // Escala de espaçamento: mantém distâncias consistentes entre os elementos.
+  
   static const s8 = 8.0;
   static const s16 = 16.0;
   static const s24 = 24.0;
 
-  // Arredondamentos específicos de cada tipo de componente.
+  
   static const raioCampo = 12.0;
   static const raioBotao = 12.0;
   static const raioCartao = 20.0;
 
-  // Decoração reutilizada por todos os cartões do projeto.
+  
   static BoxDecoration get cartao => BoxDecoration(
     color: superficie,
     borderRadius: BorderRadius.circular(raioCartao),
@@ -41,7 +39,7 @@ abstract final class EscolaDS {
     ],
   );
 
-  // Estilos tipográficos. Todos usam a fonte Inter do Google Fonts.
+  
   static TextStyle get corpo =>
       GoogleFonts.inter(fontSize: 16, height: 1.5, color: secundario);
   static TextStyle get rotulo => GoogleFonts.inter(
